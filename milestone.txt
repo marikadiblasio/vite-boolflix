@@ -1,0 +1,14 @@
+Milestone 1
+    Header con h1/logo e form con form input e bottone.
+    Pagina iniziale vuota: "la tua ricerca non ha prodotto risultati".
+    I risultati della ricerca sono divisi in componente MovieList e componente TvList e sono mostrati in componenti Card (che ruotano all'hover mostrando altre info) con immgine e titolo.
+    La card è importata sia in MovieList che TvList
+    ComponenteCard - attributi/props: titolo del film, immagine locandina,[per hover titolo originale, lingua (e relativa bandiera - da inserire nelle img!)voto (il voto deve essere portato a num intero e serve a riempire numero di stelline (5 o 10?) corrispondenti ad esso), trama(overview)]  
+Milestone 2
+    Al submit la pagine si popolerà con sezione film (componente MovieList) e sezione serie tv (componente TvList).
+    La pagina si popola dinamicamente: la funzione prende valore dall'input - salvato in store.js- e lo usa per chiamate api: 1 search-movie e una search-tv.
+    Passo alla card i valori che ottenuti e necessari.
+    Indirizzo chiamata: baseurl + enpoint (search/movie o searche/tv) + options (apykey - fissa; query (dall'input); offset e num (0, 20?)); controllo per non passare parametri vuoti
+Milestone 3
+    Gestione errori di ricerca o restituzione di oggetti senza immagine o altre proprietà
+    Gestire la grafica della Card all'hover
