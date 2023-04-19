@@ -1,7 +1,7 @@
 Milestone 1
-    Header con h1/logo e form con form input e bottone.
+    Header con h1/logo e form con form input e bottone($emit verso App?/funz. in store?).
     Pagina iniziale vuota: "la tua ricerca non ha prodotto risultati".
-    I risultati della ricerca sono divisi in componente MovieList e componente TvList e sono mostrati in componenti Card (che ruotano all'hover mostrando altre info) con immgine e titolo.
+    I risultati della ricerca sono divisi in componente MovieList e componente TvList (lo stesso componente ripetuto?)e sono mostrati in componenti Card (che ruotano all'hover mostrando altre info) con immgine e titolo.
     La card è importata sia in MovieList che TvList
     ComponenteCard - attributi/props: titolo del film, immagine locandina,[per hover titolo originale, lingua (e relativa bandiera - da inserire nelle img!)voto (il voto deve essere portato a num intero e serve a riempire numero di stelline (5 o 10?) corrispondenti ad esso), trama(overview)]  
 Milestone 2
