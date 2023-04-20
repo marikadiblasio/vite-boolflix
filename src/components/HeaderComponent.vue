@@ -3,13 +3,13 @@
         <h1 class="text-uppercase m-3 w-20">Boolfix</h1>
         <div class="input-group m-3 w-20">
             <input type="text" class="form-control" placeholder="Search" name="searchString" v-model="store.search.query">
-            <button @click.prevent="getData" class="btn btn-outline-secondary" type="button">Button</button>
+            <button @click.prevent="$emit('doSearch')" class="btn btn-outline-secondary" type="button">Button</button>
         </div>
     </header>
 </template>
 
 <script>
-    import axios from 'axios';
+    // import axios from 'axios';
     import { store } from '../data/store';
     export default {
         name: 'HeaderComponent',
@@ -17,46 +17,46 @@
             return{
                 store
             }
-        },
-        methods: {
-             getData(){
-                 let option = {};
-                 let params = store.search;
-                 for (let key in store.search){
-                     if(store.search[key]){
-                        params.key = store.search[key];
-                     }
-                }
-                if(Object.keys(params).length>0){
-                    option.params= params;
-                }
-                let movieUrl = store.baseUrl + store.endpoints.endMovie;
-                axios.get(movieUrl, option).then((res)=>{
-                    store.results.movieRes = res.data.results;
-                    console.log(store.results.movieRes[3].title)
-                    for (let i of store.results.movieRes){
-                    }
-                    // console.log(store.results.movieRes)
+         },
+        // methods: {
+        //      getData(){
+        //          let option = {};
+        //          let params = store.search;
+        //          for (let key in store.search){
+        //              if(store.search[key]){
+        //                 params.key = store.search[key];
+        //              }
+        //         }
+        //         if(Object.keys(params).length>0){
+        //             option.params= params;
+        //         }
+        //         let movieUrl = store.baseUrl + store.endpoints.endMovie;
+        //         axios.get(movieUrl, option).then((res)=>{
+        //             store.results.movieRes = res.data.results;
+        //             console.log(store.results.movieRes[3].title)
+        //             for (let i of store.results.movieRes){
+        //             }
+        //             // console.log(store.results.movieRes)
 
-                })//catch((error)=>{
-            //     //     store.errorMessage=error.response.status_message;
-            //     // })
-             let tvUrl = store.baseUrl + store.endpoints.endTv;
-             axios.get(tvUrl, option).then((res)=>{
-                console.log(res.data.results)
-                store.results.tvRes = res.data.results;
-                for (let i of store.results.tvRes) {
-                        i.original_title = i.original_name;
-                        i.title = i.name;
-                    }
-                    console.log(store.results.tvRes)
+        //         })//catch((error)=>{
+        //     //     //     store.errorMessage=error.response.status_message;
+        //     //     // })
+        //      let tvUrl = store.baseUrl + store.endpoints.endTv;
+        //      axios.get(tvUrl, option).then((res)=>{
+        //         console.log(res.data.results)
+        //         store.results.tvRes = res.data.results;
+        //         for (let i of store.results.tvRes) {
+        //                 i.original_title = i.original_name;
+        //                 i.title = i.name;
+        //             }
+        //             console.log(store.results.tvRes)
                    
-             })//.catch((error)=>{
-            //     //     store.errorMessage=error.response.status_message;
-            //     //     console.log(error.response.status_message)
-            //     // })
-             }
-        },
+        //      })//.catch((error)=>{
+        //     //     //     store.errorMessage=error.response.status_message;
+        //     //     //     console.log(error.response.status_message)
+        //     //     // })
+        //      }
+        // },
         mounted(){
            // console.log(store.search)
         }

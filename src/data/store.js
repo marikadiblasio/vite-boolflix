@@ -19,4 +19,5 @@ export const store = reactive({
         movieRes: [],
         tvRes: []
     },
+    //  flag: ''
 })

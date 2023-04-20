@@ -8,7 +8,7 @@
             <div class="card-body">
                 <h3>{{ title }}</h3>
                 <h5>{{ originalTitle }}</h5>
-                <!-- <div>{{ language }} <img :src="'/images/' + language + '.png'" alt=""></div> -->
+                <div>{{ language }} <img class="flag" :src="'/images/' + flag + '.png'" alt=""></div>
                 <div>
                     <h6>Trama</h6>
                     <p>{{ overview }}</p>
@@ -20,6 +20,7 @@
 </template>
 
 <script>
+    import {store} from '../data/store';
     export default {
         name: 'CardComponent',
         props: //['title', 'originalTitle', 'language', 'vote', 'image']
@@ -32,7 +33,10 @@
             },
             language: {
                 type: String,
-                default: 'unknown'
+                // default: 'unknown'
+            },
+            flag: {
+                type: String
             },
             vote: {
                 type: Number,
@@ -43,7 +47,13 @@
             overview: {
                 type: String
             }
-        }
+        },
+        data(){
+            return{
+                store,
+                flag: this.language === 'en' || this.language === 'es' || this.language === 'it' || this.language === 'de' ||this.language === 'fr'? this.language : 'unknown',
+            }
+        },
     }
 </script>
 
@@ -68,5 +78,8 @@
 //    }
     .col-12.col-md-6.col-lg-4:hover .back{
         display: block;
+    }
+    .flag{
+        width: 30px;
     }
 </style>
