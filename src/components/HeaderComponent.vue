@@ -19,34 +19,56 @@
             }
         },
         methods: {
-            getData(){
-                let option = {};
-                let params = store.search;
-                for (let key in store.search){
-                    if(store.search[key]){
+             getData(){
+                 let option = {};
+                 let params = store.search;
+                 for (let key in store.search){
+                     if(store.search[key]){
                         params.key = store.search[key];
-                    }
+                     }
                 }
                 if(Object.keys(params).length>0){
                     option.params= params;
                 }
-                let url = store.baseUrl + store.endpoints.endMovie;
-                axios.get(url, option).then((res)=>{
-                    console.log(res.data.results);
-                    store.results = res.data.results;
-                    console.log(store.results);
-                })
-            }
+                let movieUrl = store.baseUrl + store.endpoints.endMovie;
+                axios.get(movieUrl, option).then((res)=>{
+                    store.results.movieRes = res.data.results;
+                    console.log(store.results.movieRes[3].title)
+                    for (let i of store.results.movieRes){
+                    }
+                    // console.log(store.results.movieRes)
+
+                })//catch((error)=>{
+            //     //     store.errorMessage=error.response.status_message;
+            //     // })
+             let tvUrl = store.baseUrl + store.endpoints.endTv;
+             axios.get(tvUrl, option).then((res)=>{
+                console.log(res.data.results)
+                store.results.tvRes = res.data.results;
+                for (let i of store.results.tvRes) {
+                        i.original_title = i.original_name;
+                        i.title = i.name;
+                    }
+                    console.log(store.results.tvRes)
+                   
+             })//.catch((error)=>{
+            //     //     store.errorMessage=error.response.status_message;
+            //     //     console.log(error.response.status_message)
+            //     // })
+             }
         },
         mounted(){
-            console.log(store.search)
+           // console.log(store.search)
         }
     }
+
 </script>
 
 <style lang="scss" scoped>
-    //@use '../assets/partials/variables' as *;
-
+    @use '../assets/partials/variables' as *;
+    header{
+        color: $my-tertiary;
+    }
     .w-20 {
         width: 20%;
     }
