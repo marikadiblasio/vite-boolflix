@@ -35,9 +35,6 @@
                 type: String,
                 // default: 'unknown'
             },
-            flag: {
-                type: String
-            },
             vote: {
                 type: Number,
             },

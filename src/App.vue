@@ -3,8 +3,7 @@
     <HeaderComponent @doSearch="getData"/>
     <!-- <div >Effettua una ricerca</div> -->
     <CardList />
-    <h3 class="mt-5 pt-5">Serie Tv</h3>
-    <!-- <CardList /> -->
+    <tvList />
   </div>
 </template>
 
@@ -13,6 +12,7 @@
    import axios from 'axios';
   import HeaderComponent from './components/HeaderComponent.vue';
   import CardList from './components/CardList.vue';
+  import tvList from './components/tvList.vue';
   export default {
     name:'App',
     data(){
@@ -22,7 +22,8 @@
     },
     components: {
             HeaderComponent,
-            CardList
+            CardList,
+            tvList
     },
     methods:{
       getData(){
