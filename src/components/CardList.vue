@@ -32,8 +32,6 @@
         },
         mounted(){
             console.log(store.results.movieRes)
-            console.log(store.results.movieRes.language)
-
         }
     }
 </script>
