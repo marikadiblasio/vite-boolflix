@@ -6,7 +6,7 @@
                 <CardComponent v-for="info in store.results.tvRes" :image="baseImgUrl+ info.poster_path"
                 :title="info.title" :original-title="info.original_title" :vote="info.vote_average" :language="info.original_language" 
                 :overview="info.overview"/>
-                <div v-if="store.errorMessage">{{ store.errorMessage }}</div>
+                <div class="text-white" v-if="store.errorMessage">{{ store.errorMessage }}</div>
             </div>
         </div>
     </div>

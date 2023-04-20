@@ -1,10 +1,12 @@
 <template>
     <div class="col-12 col-md-6 col-lg-4 d-flex">
         <div class="card front w-100">
-            <img class="front-img" :src="image" :alt="title">
+            <!-- <img class="front-img" :src="image" :alt="title"> -->
+            <img class="front-img" :src="fullImgPath" :alt="title">
+
         </div>
         <div class="card back w-100">
-            <img class="back-img img-top-card" :src="image" :alt="title">
+            <img class="back-img back-img d-md-none" :src="fullImgPath" :alt="title">
             <div class="card-body">
                 <h3>{{ title }}</h3>
                 <h5>{{ originalTitle }}</h5>
@@ -36,7 +38,6 @@
             },
             language: {
                 type: String,
-                // default: 'unknown'
             },
             vote: {
                 type: Number,
@@ -45,6 +46,9 @@
                 type: String,
             },
             overview: {
+                type: String,
+            },
+            imagePath: {
                 type: String
             }
         },
@@ -63,9 +67,27 @@
                     { id: 8},
                     { id: 9},
                     { id: 10}
-                ]
+                ],
+                baseImgUrl: 'https:image.tmdb.org/t/p/w342',
+                // flags:['en', 'it', 'fr', 'de', 'es']
             }
         },
+        computed: {
+            fullImgPath(){
+                if(this.imagePath===undefined){
+                   return 'https://banner2.cleanpng.com/20190219/ue/kisspng-photographic-film-westchester-film-festival-otherm-classical-music-mayhem-music-and-myths-and-book-5c6cb0e9c89a56.7139856315506270498217.jpg'
+                } else{
+                    return this.baseImgUrl + this.imagePath;
+                }
+            },
+            // flag(){
+            //     if(this.flags.includes(this.language)){
+            //         return this.language
+            //     } else {
+            //         return 'unknown'
+            //     }
+            // }
+        }
     }
 </script>
 
@@ -83,11 +105,12 @@
     height: 100%;
     object-fit: cover;
    }
-//    .back-img{
-//     width: 100%;
-//     max-height: 150px;
-//     object-fit: cover;
-//    }
+   .back-img{
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    object-position: bottom;
+   }
     .col-12.col-md-6.col-lg-4:hover .back{
         display: block;
     }

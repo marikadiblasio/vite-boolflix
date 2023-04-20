@@ -3,12 +3,12 @@
         <div class="container-fluid">
             <h2 class='text-white'>Movies</h2>
             <div class="row g-5">
-                <CardComponent v-for="info in store.results.movieRes" :image="baseImgUrl+ info.poster_path"
+                <CardComponent v-for="info in store.results.movieRes"  :image-path="info.poster_path"
                 :title="info.title" :original-title="info.original_title" :vote="info.vote_average" :language="info.original_language" 
                 :overview="info.overview"/>
                 <div v-if="store.errorMessage">{{ store.errorMessage }}</div>
             </div>
-            <!-- <img src="https://image.shutterstock.com/image-vector/recorder-short-film-icon-image-260nw-579908209.jpg" alt=""> -->
+            <!-- v-for="info in store.results.movieRes.filter((movie) => movie.original_language==='es')"  :image="baseImgUrl+info.poster_path"-->
         </div>
     </div>
 </template>
@@ -25,11 +25,10 @@
         data(){
             return{
                 store,
-                baseImgUrl: 'https:image.tmdb.org/t/p/w342',
+                baseImgUrl: 'https:image.tmdb.org/t/p/w342'
             }
         },
         mounted(){
-            // console.log(store.results.movieRes);
         }
     }
 </script>
