@@ -3,7 +3,7 @@
         <h1 class="text-uppercase m-3 w-20">Boolfix</h1>
         <div class="input-group m-3 w-20">
             <input type="text" class="form-control" placeholder="Search" name="searchString" v-model="store.search.query">
-            <button @click.prevent="$emit('doSearch')" class="btn btn-outline-secondary" type="button">Button</button>
+            <button @keyup.enter="$emit('doSearch')" @click.prevent="$emit('doSearch')" class="btn btn-outline-secondary" type="button">Button</button>
         </div>
     </header>
 </template>

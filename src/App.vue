@@ -2,8 +2,11 @@
   <div>
     <HeaderComponent @doSearch="getData" />
     <div class="text-white" v-if="!store.search.query">Effettua una ricerca</div>
-    <CardList />
-    <tvList />
+    <div v-else>
+      <CardList />
+      <tvList />
+    </div>
+    
   </div>
 </template>
 
