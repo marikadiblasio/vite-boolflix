@@ -13,7 +13,10 @@
                     <h6>Trama</h6>
                     <p>{{ overview }}</p>
                 </div>
-            <div>{{ vote }}</div>
+            <div>
+                {{ Math.round(vote) }}
+                <i v-for="(n) in stars" :key="n.id" :class="{'voted': n.id <= Math.round(vote)}" class="fa-solid fa-star"></i>
+            </div>
             </div>
         </div>
     </div>
@@ -49,6 +52,18 @@
             return{
                 store,
                 flag: this.language === 'en' || this.language === 'es' || this.language === 'it' || this.language === 'de' ||this.language === 'fr'? this.language : 'unknown',
+                stars: [
+                    { id: 1},
+                    { id: 2},
+                    { id: 3},
+                    { id: 4},
+                    { id: 5},
+                    { id: 6},
+                    { id: 7},
+                    { id: 8},
+                    { id: 9},
+                    { id: 10}
+                ]
             }
         },
     }
@@ -78,5 +93,8 @@
     }
     .flag{
         width: 30px;
+    }
+    i.voted{
+        color: orange;
     }
 </style>

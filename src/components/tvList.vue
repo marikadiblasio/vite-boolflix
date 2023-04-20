@@ -27,7 +27,7 @@
             }
         },
         mounted(){
-            console.log(store.results.movieRes);
+            console.log(store.results.tvRes);
         }
     }
 </script>

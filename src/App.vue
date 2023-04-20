@@ -40,7 +40,6 @@
         let movieUrl = store.baseUrl + store.endpoints.endMovie;
         axios.get(movieUrl, option).then((res)=>{
           store.results.movieRes = res.data.results;
-          console.log(store.results.movieRes[3].title)
         })//catch((error)=>{
             //     //     store.errorMessage=error.response.status_message;
             //     // })
@@ -50,6 +49,7 @@
           for (let i of store.results.tvRes) {
                    i.original_title = i.original_name;
                    i.title = i.name;
+                  //  console.log(Math.round(i.vote_average))
           }        
         })//.catch((error)=>{
             //     //     store.errorMessage=error.response.status_message;
