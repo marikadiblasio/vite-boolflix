@@ -1,9 +1,7 @@
 <template>
     <div class="col-12 col-md-6 col-lg-4 d-flex">
         <div class="card front w-100">
-            <!-- <img class="front-img" :src="image" :alt="title"> -->
             <img class="front-img" :src="fullImgPath" :alt="title">
-
         </div>
         <div class="card back w-100">
             <img class="back-img back-img d-md-none" :src="fullImgPath" :alt="title">
@@ -93,12 +91,32 @@
 
 <style lang="scss" scoped>
     .col-12.col-md-6.col-lg-4:hover .front{
-        display: none;
+        transform: rotateY(180deg);
+    }
+    .col-12.col-md-6.col-lg-4{
+        transition: transform 0.8s;
+        transform-style: preserve-3d;
+        perspective: 1000px;
+        height: 80vh;
     }
     .back{
-         display: none;
-         width: 100%;
-         max-height: 100%;
+        transform: rotateY(180deg);
+         position: absolute;
+        width: 100%;
+        height: 100%;
+        -webkit-backface-visibility: hidden; /* Safari */
+        backface-visibility: hidden;
+        transition: transform 0.8s;
+        transform-style: preserve-3d;
+    }
+    .front{
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        -webkit-backface-visibility: hidden; /* Safari */
+        backface-visibility: hidden;
+        transition: transform 0.8s;
+        transform-style: preserve-3d;
     }
    .front-img{
     width: 100%;
@@ -109,10 +127,10 @@
     width: 100%;
     height: 150px;
     object-fit: cover;
-    object-position: bottom;
+    object-position: center;
    }
     .col-12.col-md-6.col-lg-4:hover .back{
-        display: block;
+        transform: rotateY(0);
     }
     .flag{
         width: 30px;
@@ -120,4 +138,11 @@
     i.voted{
         color: orange;
     }
+    @media screen and (min-height: 700px){
+        .col-12.col-md-6.col-lg-4{
+            height: 30vh;
+        }
+    }
+        
+    
 </style>

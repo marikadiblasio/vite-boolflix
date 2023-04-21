@@ -1,7 +1,7 @@
 <template>
   <div>
     <HeaderComponent @doSearch="getData" />
-    <div class="text-white" v-if="!store.search.query">Effettua una ricerca</div>
+    <div class="text-white m-3" v-if="!store.search.query">Effettua una ricerca</div>
     <div v-else>
       <CardList />
       <tvList />

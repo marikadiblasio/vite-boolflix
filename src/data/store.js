@@ -11,9 +11,7 @@ export const store = reactive({
     },
     search: {
         api_key: 'f4f73f1cccb8955e7c99926b717eec36',
-        query: '',
-        offset: 0,
-        num: 20
+        query: ''
     },
     results: {
         movieRes: [],
