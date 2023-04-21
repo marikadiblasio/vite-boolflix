@@ -41,7 +41,7 @@ export default {
     getItems(entity) {
       this.store[entity].noRes = false;
       this.store[entity].errorMessage='';
-      this.store[entity].loading= false;
+      this.store[entity].loading= true;
       let option = {};
       let params = store.search;
       for (let key in store.search) {
@@ -55,7 +55,9 @@ export default {
       let Url = store.baseUrl + store[entity].endpoint;
       axios.get(Url, option).then((res) => {
         store[entity].results = res.data.results;
-        if (res.data.results.length === 0) this.store[entity].noRes = true;
+        if (store[entity].results.length === 0){
+          this.store[entity].noRes = true;
+        } 
         console.log(store[entity].results);
       }).catch((error) => {
         store[entity].errorMessage = error.message; 
@@ -75,9 +77,5 @@ export default {
   
 <style lang="scss" scoped>
 @use './assets/partials/variables';
-  .alert{
-    color: #5e8669;
-    border-color: #5e8669; 
-    background-color: #c6e8cf;
-  }
+ 
 </style>

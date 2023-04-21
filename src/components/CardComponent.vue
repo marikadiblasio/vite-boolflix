@@ -8,7 +8,7 @@
             <div class="card-body">
                 <h3>{{ item.title }}</h3>
                 <h5>{{ item.original_title || item.original_name}}</h5>
-                <div><img class="flag" :src="'/images/' + flag + '.png'" :alt="item.original_language"></div>
+                <div><img class="flag" :src="'/images/svg/language-' + item.original_language + '.svg'" :alt="item.original_language"></div>
                 <div v-if="item.overview">
                     <h6>Trama</h6>
                     <p>{{ item.overview }}</p>
@@ -30,7 +30,7 @@
         data(){
             return{
                 store,
-                flag: this.language === 'en' || this.language === 'es' || this.language === 'it' || this.language === 'de' ||this.language === 'fr'? this.language : 'unknown',
+                // flag: this.language === 'en' || this.language === 'es' || this.language === 'it' || this.language === 'de' ||this.language === 'fr'? this.language : 'unknown',
                 stars: [
                     { id: 1},
                     { id: 2},
@@ -61,7 +61,7 @@
         transition: transform 0.8s;
         transform-style: preserve-3d;
         perspective: 1000px;
-        height: 80vh;
+        height: 90vh;
     }
     .back{
         transform: rotateY(180deg);
@@ -104,7 +104,7 @@
     }
     @media screen and (min-height: 700px){
         .col-12.col-md-6.col-lg-4{
-            height: 650px;
+            height: 500px;
         }
     }
         
