@@ -4,7 +4,7 @@
             <img class="front-img" :src="fullImgPath" :alt="title">
         </div>
         <div class="card back w-100">
-            <img class="back-img back-img d-md-none" :src="fullImgPath" :alt="title">
+            <img class="back-img back-img" :src="fullImgPath" :alt="title">
             <div class="card-body">
                 <h3>{{ title }}</h3>
                 <h5>{{ originalTitle }}</h5>
@@ -125,9 +125,9 @@
    }
    .back-img{
     width: 100%;
-    height: 150px;
+    height: 40%;
     object-fit: cover;
-    object-position: center;
+    object-position: bottom;
    }
     .col-12.col-md-6.col-lg-4:hover .back{
         transform: rotateY(0);
@@ -140,7 +140,7 @@
     }
     @media screen and (min-height: 700px){
         .col-12.col-md-6.col-lg-4{
-            height: 30vh;
+            height: 650px;
         }
     }
         
