@@ -1,21 +1,21 @@
 <template>
     <div class="col-12 col-md-6 col-lg-4 d-flex">
         <div class="card front w-100 h-100">
-            <img class="front-img" :src="fullImgPath" :alt="title">
+            <img class="front-img" :src="fullImgPath" :alt="item.title || item.name">
         </div>
         <div class="card back w-100 h-100">
-            <img class="back-img" :src="fullImgPath" :alt="title">
+            <img class="back-img" :src="fullImgPath" :alt="item.title || item.name">
             <div class="card-body">
-                <h3>{{ title }}</h3>
-                <h5>{{ originalTitle }}</h5>
-                <div>{{ language }} <img class="flag" :src="'/images/' + flag + '.png'" alt=""></div>
-                <div v-if="overview">
+                <h3>{{ item.title }}</h3>
+                <h5>{{ item.original_title || item.original_name}}</h5>
+                <div><img class="flag" :src="'/images/' + flag + '.png'" :alt="item.original_language"></div>
+                <div v-if="item.overview">
                     <h6>Trama</h6>
-                    <p>{{ overview }}</p>
+                    <p>{{ item.overview }}</p>
                 </div>
             <div>
-                {{ Math.round(vote)/2 }}
-                <i v-for="(n) in stars" :key="n.id" :class="(n.id <= Math.round(vote)/2) ? 'fa-solid' : 'fa-regular'" class=" fa-star"></i>
+                {{ Math.round(item.vote_average)/2 }}
+                <i v-for="(n) in stars" :key="n.id" :class="(n.id <= Math.round(item.vote_average)/2) ? 'fa-solid' : 'fa-regular'" class=" fa-star"></i>
             </div>
             </div>
         </div>
@@ -26,30 +26,7 @@
     import {store} from '../data/store';
     export default {
         name: 'CardComponent',
-        props: //['title', 'originalTitle', 'language', 'vote', 'image']
-        {
-            title: {
-                type: String,
-            },
-            originalTitle: {
-                type: String,
-            },
-            language: {
-                type: String,
-            },
-            vote: {
-                type: Number,
-            },
-            image: {
-                type: String,
-            },
-            overview: {
-                type: String,
-            },
-            imagePath: {
-                type: String
-            }
-        },
+        props: ['item'],
         data(){
             return{
                 store,
@@ -62,24 +39,16 @@
                     { id: 5},
                 ],
                 baseImgUrl: 'https:image.tmdb.org/t/p/w342',
-                // flags:['en', 'it', 'fr', 'de', 'es']
             }
         },
         computed: {
             fullImgPath(){
-                if(this.imagePath===undefined || this.imagePath===null){
+                if(this.item.poster_path === undefined || this.item.poster_path === null){
                    return 'https://banner2.cleanpng.com/20190219/ue/kisspng-photographic-film-westchester-film-festival-otherm-classical-music-mayhem-music-and-myths-and-book-5c6cb0e9c89a56.7139856315506270498217.jpg'
                 } else{
-                    return this.baseImgUrl + this.imagePath;
+                    return this.baseImgUrl + this.item.poster_path;
                 }
             },
-            // flag(){
-            //     if(this.flags.includes(this.language)){
-            //         return this.language
-            //     } else {
-            //         return 'unknown'
-            //     }
-            // }
         }
     }
 </script>
@@ -116,7 +85,6 @@
    .front-img{
     width: 100%;
     height: 100%;
-    object-fit: cover;
    }
    .back-img{
     width: 100%;

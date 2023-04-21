@@ -1,9 +1,9 @@
 <template>
     <header class="d-flex container-fluid justify-content-between">
-        <h1 class="text-uppercase m-3 w-20">Boolfix</h1>
-        <div class="input-group m-3 w-20">
+        <h1 class="text-uppercase mt-3 w-20">Boolfix</h1>
+        <div class="input-group mt-3 w-20">
             <input @keyup.enter="$emit('doSearch')"  type="text" class="form-control" placeholder="Search" name="searchString" v-model="store.search.query">
-            <button @click.prevent="$emit('doSearch')" class="btn btn-outline-secondary" type="button">Button</button>
+            <button @click.prevent="$emit('doSearch')" class="btn btn-outline" type="button">Button</button>
         </div>
     </header>
 </template>
@@ -72,7 +72,8 @@
     .w-20 {
         width: 20%;
     }
-    // .button {
-    //     border-color: $my-tertiary;
-    // }
+    .btn {
+        border-color: $my-tertiary;
+        color: $my-tertiary;
+    }
 </style>

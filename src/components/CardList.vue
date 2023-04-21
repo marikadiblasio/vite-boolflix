@@ -1,15 +1,13 @@
 <template>
     <div>
+        <h2 class='text-white mb-5 container-fluid'>{{title}}</h2>
         <div class="container">
-            <h2 class='text-white'>Movies</h2>
             <div class="row gy-5">
-                <CardComponent v-for="info in store.results.movieRes"  :image-path="info.poster_path"
-                :title="info.title" :original-title="info.original_title" :vote="info.vote_average" :language="info.original_language" 
-                :overview="info.overview"/>
+                <CardComponent v-for="(item, index) in store[type].results" :item="item" :key="index" />
             </div>
-            <div class="alert alert-danger" v-if="store.errorMessage"> {{ store.errorMessage }}</div>
-            <div class="alert alert-success" v-if="store.loading"> {{ store.loading }}</div>
-            <!-- v-for="info in store.results.movieRes.filter((movie) => movie.original_language==='es')"  :image="baseImgUrl+info.poster_path"-->
+        <div class="alert alert-danger" v-if="store[type].errorMessage"> {{ store[type].errorMessage }}</div> -->
+        <div class="alert alert-success" v-if="store[type].loading"> Loading...</div>
+        <div class="alert" v-if="store.noRes">La tua ricerca non ha prodotto risultati</div>
         </div>
     </div>
 </template>
@@ -19,14 +17,13 @@
     import CardComponent from './CardComponent.vue';
     export default {
         name: 'CardList',
-        // props: ['list'],
+        props: ['title', 'type'],
         components: {
             CardComponent
         },
         data(){
             return{
-                store,
-                baseImgUrl: 'https:image.tmdb.org/t/p/w342'
+                store
             }
         },
         mounted(){

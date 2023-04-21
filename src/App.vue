@@ -1,38 +1,47 @@
 <template>
   <div>
     <HeaderComponent @doSearch="getData" />
-    <div class="text-white m-3" v-if="!store.search.query">Effettua una ricerca</div>
-    <div v-else>
-      <CardList />
-      <tvList />
-    </div>
-    <div class="text-white" v-if="store.noRes">La tua ricerca non ha prodotto risultati</div>
+    <!-- <div class="text-white m-3" v-if="!store.search.query">Effettua una ricerca</div>
+    <div v-else>-->
+      <CardList v-for="item in items" :title="item.title" :type="item.type"/> 
+      <!-- <tvList /> -->
+    <!-- </div> -->
   </div>
 </template>
 
 <script>
 import { store } from './data/store';
 import axios from 'axios';
-import HeaderComponent from './components/HeaderComponent.vue';
-import CardList from './components/CardList.vue';
-import tvList from './components/tvList.vue';
+ import HeaderComponent from './components/HeaderComponent.vue';
+ import CardList from './components/CardList.vue';
+// import tvList from './components/tvList.vue';
 export default {
   name: 'App',
   data() {
     return {
       store,
+      items:[
+        {
+          title: 'Movies',
+          type: 'movie'
+        },
+        {
+          title: 'TV-Series',
+          type: 'tv',
+        }
+      ]
     }
   },
-  components: {
-    HeaderComponent,
-    CardList,
-    tvList
-  },
+   components: {
+     HeaderComponent,
+     CardList,
+  //   tvList
+   },
   methods: {
-    getData() {
-      this.store.noRes = false;
-      this.store.errorMessage='';
-      this.store.loading= true;
+    getItems(entity) {
+      this.store[entity].noRes = false;
+      this.store[entity].errorMessage='';
+      this.store[entity].loading= false;
       let option = {};
       let params = store.search;
       for (let key in store.search) {
@@ -43,31 +52,32 @@ export default {
       if (Object.keys(params).length > 0) {
         option.params = params;
       }
-      let movieUrl = store.baseUrl + store.endpoints.endMovie;
-      axios.get(movieUrl, option).then((res) => {
-        store.results.movieRes = res.data.results;
-        if (res.data.results.length === 0) this.store.noRes = true;
+      let Url = store.baseUrl + store[entity].endpoint;
+      axios.get(Url, option).then((res) => {
+        store[entity].results = res.data.results;
+        if (res.data.results.length === 0) this.store[entity].noRes = true;
+        console.log(store[entity].results);
       }).catch((error) => {
-        store.errorMessage = error.message; 
-      }).finally(()=> this.store.loading = false);
-
-      let tvUrl = store.baseUrl + store.endpoints.endTv;
-      axios.get(tvUrl, option).then((res) => {
-        store.results.tvRes = res.data.results;
-        for (let i of store.results.tvRes) {
-          i.original_title = i.original_name;
-          i.title = i.name;
-        }
-      }).catch((error) => {
-        store.errorMessage = error.message;
-        console.log(error.message);
-      }).finally(() =>this.store.loading = false);
+        store[entity].errorMessage = error.message; 
+      }).finally(()=> this.store[entity].loading = false);
+    },
+    getData(){
+      this.getItems('movie');
+      this.getItems('tv');
     }
   },
   mounted() {
-    // console.log(store.results)
+    this.getData();
+    console.log(store.movie);
   }
 }
 </script>
-
-<style lang="scss" scoped></style>
+  
+<style lang="scss" scoped>
+@use './assets/partials/variables';
+  .alert{
+    color: #5e8669;
+    border-color: #5e8669; 
+    background-color: #c6e8cf;
+  }
+</style>
