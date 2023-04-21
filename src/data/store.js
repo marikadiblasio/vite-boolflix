@@ -14,5 +14,6 @@ export const store = reactive({
         movieRes: [],
         tvRes: []
     },
+    noRes: false,
     loading: false,
 })

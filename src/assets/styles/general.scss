@@ -10,3 +10,12 @@ $fa-font-path: "./webfonts";
 body{
     background-color: $my-primary;
 }
+::-webkit-scrollbar{
+    width: 2px;
+}
+::-webkit-scrollbar-track {
+    background-color: $my-primary;
+}
+::-webkit-scrollbar-thumb {
+    background: $my-tertiary; 
+  }

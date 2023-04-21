@@ -1,5 +1,5 @@
 <template>
-    <header class="d-flex justify-content-between">
+    <header class="d-flex container-fluid justify-content-between">
         <h1 class="text-uppercase m-3 w-20">Boolfix</h1>
         <div class="input-group m-3 w-20">
             <input @keyup.enter="$emit('doSearch')"  type="text" class="form-control" placeholder="Search" name="searchString" v-model="store.search.query">

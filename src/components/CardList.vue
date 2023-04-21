@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="container-fluid">
+        <div class="container">
             <h2 class='text-white'>Movies</h2>
             <div class="row gy-5">
                 <CardComponent v-for="info in store.results.movieRes"  :image-path="info.poster_path"
@@ -35,5 +35,5 @@
 </script>
 
 <style lang="scss" scoped>
-
+    
 </style>

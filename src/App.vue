@@ -6,7 +6,7 @@
       <CardList />
       <tvList />
     </div>
-    
+    <div class="text-white" v-if="store.noRes">La tua ricerca non ha prodotto risultati</div>
   </div>
 </template>
 
@@ -30,6 +30,7 @@ export default {
   },
   methods: {
     getData() {
+      this.store.noRes = false;
       this.store.errorMessage='';
       this.store.loading= true;
       let option = {};
@@ -45,7 +46,7 @@ export default {
       let movieUrl = store.baseUrl + store.endpoints.endMovie;
       axios.get(movieUrl, option).then((res) => {
         store.results.movieRes = res.data.results;
-        console.log(store.results.movieRes);
+        if (res.data.results.length === 0) this.store.noRes = true;
       }).catch((error) => {
         store.errorMessage = error.message; 
       }).finally(()=> this.store.loading = false);

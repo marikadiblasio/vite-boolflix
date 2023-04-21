@@ -1,13 +1,14 @@
 <template>
     <div>
-        <div class="container-fluid">
+        <div class="container">
             <h2 class='text-white py-5'>Serie Tv</h2>
             <div class="row gy-5">
                 <CardComponent v-for="info in store.results.movieRes"  :image-path="info.poster_path"
                 :title="info.title" :original-title="info.original_title" :vote="info.vote_average" :language="info.original_language" 
                 :overview="info.overview"/>
-                <div class="text-white" v-if="store.errorMessage">{{ store.errorMessage }}</div>
             </div>
+            <div class="alert alert-danger" v-if="store.errorMessage"> {{ store.errorMessage }}</div>
+            <div class="alert alert-success" v-if="store.loading"> {{ store.loading }}</div>
         </div>
     </div>
 </template>
