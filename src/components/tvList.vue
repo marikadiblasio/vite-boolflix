@@ -2,8 +2,8 @@
     <div>
         <div class="container-fluid">
             <h2 class='text-white py-5'>Serie Tv</h2>
-            <div class="row g-5">
-                <CardComponent v-for="info in store.results.tvRes" :image="baseImgUrl+ info.poster_path"
+            <div class="row gy-5">
+                <CardComponent v-for="info in store.results.movieRes"  :image-path="info.poster_path"
                 :title="info.title" :original-title="info.original_title" :vote="info.vote_average" :language="info.original_language" 
                 :overview="info.overview"/>
                 <div class="text-white" v-if="store.errorMessage">{{ store.errorMessage }}</div>
@@ -23,11 +23,11 @@
         data(){
             return{
                 store,
-                baseImgUrl: 'https:image.tmdb.org/t/p/w342',
+                baseImgUrl: 'https:image.tmdb.org/t/p/w342'
             }
         },
         mounted(){
-            console.log(store.results.tvRes);
+            // console.log(store.results.tvRes);
         }
     }
 </script>

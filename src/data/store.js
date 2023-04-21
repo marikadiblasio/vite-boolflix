@@ -1,6 +1,3 @@
-//https://image.tmdb.org/t/p/ base url img
-// import { axios } from 'axios';
-
 import { reactive } from "vue";
 export const store = reactive({
     baseUrl: 'https:api.themoviedb.org/3/',
@@ -17,5 +14,5 @@ export const store = reactive({
         movieRes: [],
         tvRes: []
     },
-    //  flag: ''
+    loading: false,
 })

@@ -1,21 +1,21 @@
 <template>
     <div class="col-12 col-md-6 col-lg-4 d-flex">
-        <div class="card front w-100">
+        <div class="card front w-100 h-100">
             <img class="front-img" :src="fullImgPath" :alt="title">
         </div>
-        <div class="card back w-100">
-            <img class="back-img back-img" :src="fullImgPath" :alt="title">
+        <div class="card back w-100 h-100">
+            <img class="back-img" :src="fullImgPath" :alt="title">
             <div class="card-body">
                 <h3>{{ title }}</h3>
                 <h5>{{ originalTitle }}</h5>
                 <div>{{ language }} <img class="flag" :src="'/images/' + flag + '.png'" alt=""></div>
-                <div>
+                <div v-if="overview">
                     <h6>Trama</h6>
                     <p>{{ overview }}</p>
                 </div>
             <div>
-                {{ Math.round(vote) }}
-                <i v-for="(n) in stars" :key="n.id" :class="{'voted': n.id <= Math.round(vote)}" class="fa-solid fa-star"></i>
+                {{ Math.round(vote)/2 }}
+                <i v-for="(n) in stars" :key="n.id" :class="(n.id <= Math.round(vote)/2) ? 'fa-solid' : 'fa-regular'" class=" fa-star"></i>
             </div>
             </div>
         </div>
@@ -60,11 +60,6 @@
                     { id: 3},
                     { id: 4},
                     { id: 5},
-                    { id: 6},
-                    { id: 7},
-                    { id: 8},
-                    { id: 9},
-                    { id: 10}
                 ],
                 baseImgUrl: 'https:image.tmdb.org/t/p/w342',
                 // flags:['en', 'it', 'fr', 'de', 'es']
@@ -72,7 +67,7 @@
         },
         computed: {
             fullImgPath(){
-                if(this.imagePath===undefined){
+                if(this.imagePath===undefined || this.imagePath===null){
                    return 'https://banner2.cleanpng.com/20190219/ue/kisspng-photographic-film-westchester-film-festival-otherm-classical-music-mayhem-music-and-myths-and-book-5c6cb0e9c89a56.7139856315506270498217.jpg'
                 } else{
                     return this.baseImgUrl + this.imagePath;
@@ -135,8 +130,9 @@
     .flag{
         width: 30px;
     }
-    i.voted{
-        color: orange;
+    .card-body{
+        height: 60%;
+        overflow-y: auto;
     }
     @media screen and (min-height: 700px){
         .col-12.col-md-6.col-lg-4{

@@ -30,6 +30,8 @@ export default {
   },
   methods: {
     getData() {
+      this.store.errorMessage='';
+      this.store.loading= true;
       let option = {};
       let params = store.search;
       for (let key in store.search) {
@@ -44,11 +46,10 @@ export default {
       axios.get(movieUrl, option).then((res) => {
         store.results.movieRes = res.data.results;
         console.log(store.results.movieRes);
-
       }).catch((error) => {
-        store.errorMessage = error.message;
-        
-      })
+        store.errorMessage = error.message; 
+      }).finally(()=> this.store.loading = false);
+
       let tvUrl = store.baseUrl + store.endpoints.endTv;
       axios.get(tvUrl, option).then((res) => {
         store.results.tvRes = res.data.results;
@@ -59,7 +60,7 @@ export default {
       }).catch((error) => {
         store.errorMessage = error.message;
         console.log(error.message);
-      })
+      }).finally(() =>this.store.loading = false);
     }
   },
   mounted() {
