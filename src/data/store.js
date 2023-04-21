@@ -20,4 +20,19 @@ export const store = reactive({
         loading: false,
         errorMessage: '',
     },
+    topMovie: {
+        endpoint: '/movie/top_rated',
+        results: [],
+        noRes: false,
+        loading: false,
+        errorMessage: '',
+
+    },
+    topTv: {
+        endpoint: '/tv/top_rated',
+        results: [],
+        noRes: false,
+        loading: false,
+        errorMessage: '',
+    },
 })

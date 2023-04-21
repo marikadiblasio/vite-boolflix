@@ -22,6 +22,14 @@ export default {
       store,
       items:[
         {
+          title: 'Most Popular Movies',
+          type: 'topMovie'
+        },
+        {
+          title: 'Most Popular Tv-Shows',
+          type: 'topTv'
+        },
+        {
           title: 'Movies',
           type: 'movie'
         },
@@ -52,6 +60,7 @@ export default {
       if (Object.keys(params).length > 0) {
         option.params = params;
       }
+      if (entity === 'topMovie' || entity === 'topTv') delete option.params.query;
       let Url = store.baseUrl + store[entity].endpoint;
       axios.get(Url, option).then((res) => {
         store[entity].results = res.data.results;
@@ -66,11 +75,14 @@ export default {
     getData(){
       this.getItems('movie');
       this.getItems('tv');
+    },
+    getTop(){
+      this.getItems('topMovie');
+      this.getItems('topTv');
     }
   },
   mounted() {
-    this.getData();
-    console.log(store.movie);
+      this.getTop()
   }
 }
 </script>
