@@ -35,4 +35,22 @@ export const store = reactive({
         loading: false,
         errorMessage: '',
     },
+    items:[
+        {
+          title: 'Most Popular Movies',
+          type: 'topMovie'
+        },
+        {
+          title: 'Most Popular Tv-Shows',
+          type: 'topTv'
+        },
+        {
+          title: 'Movies',
+          type: 'movie'
+        },
+        {
+          title: 'TV-Series',
+          type: 'tv',
+        }
+      ]
 })

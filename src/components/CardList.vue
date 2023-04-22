@@ -1,9 +1,11 @@
 <template>
     <div>
         <h2 class='my-5 container-fluid'>{{title}}</h2>
-        <div class="container">
-            <div class="row gy-5">
+        <div class="container position-relative">
+            <div class="row flex-nowrap gy-5">
+                <i @click="goNext" class="fa-solid fa-angle-left"></i>
                 <CardComponent v-for="(item, index) in store[type].results" :item="item" :key="index" />
+                <i class="fa-solid fa-angle-right"></i>
             </div>
         <div class="alert alert-danger" v-if="store[type].errorMessage"> {{ store[type].errorMessage }}</div>
         <div class="alert alert-success" v-if="store[type].loading"> Loading...</div>
@@ -26,6 +28,11 @@
                 store
             }
         },
+        methods: {
+            goNext(){
+
+            }
+        },
         mounted(){
         }
     }
@@ -37,9 +44,11 @@
     h2{
         color: $my-secondary;
     }
-     .alert{
-    color: #5e8669;
-    border-color: #5e8669; 
-    background-color: #c6e8cf;
-  }
+    .fa-angle-left{
+        position: absolute;
+        left: -5%;
+        top: 40%;
+        color: red;
+        font-size: 5rem;
+            }
 </style>

@@ -9,9 +9,10 @@ $fa-font-path: "./webfonts";
 
 body{
     background-color: $my-primary;
+    overflow-x:visible;
 }
 ::-webkit-scrollbar{
-    width: 2px;
+    width: 4px;
 }
 ::-webkit-scrollbar-track {
     background-color: $my-primary;

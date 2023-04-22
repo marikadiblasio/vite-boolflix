@@ -1,10 +1,10 @@
 <template>
   <div>
     <HeaderComponent @doSearch="getData" />
+    <HeroComponent />
     <!-- <div class="text-white m-3" v-if="!store.search.query">Effettua una ricerca</div>
     <div v-else>-->
       <CardList v-for="item in items" :title="item.title" :type="item.type"/> 
-      <!-- <tvList /> -->
     <!-- </div> -->
   </div>
 </template>
@@ -14,7 +14,7 @@ import { store } from './data/store';
 import axios from 'axios';
  import HeaderComponent from './components/HeaderComponent.vue';
  import CardList from './components/CardList.vue';
-// import tvList from './components/tvList.vue';
+ import HeroComponent from './components/HeroComponent.vue';
 export default {
   name: 'App',
   data() {
@@ -43,7 +43,7 @@ export default {
    components: {
      HeaderComponent,
      CardList,
-  //   tvList
+     HeroComponent
    },
   methods: {
     getItems(entity) {

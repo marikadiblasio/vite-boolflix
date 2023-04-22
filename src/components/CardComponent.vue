@@ -13,6 +13,7 @@
                     <h6>Trama</h6>
                     <p>{{ item.overview }}</p>
                 </div>
+                
             <div>
                 {{ Math.round(item.vote_average)/2 }}
                 <i v-for="(n) in stars" :key="n.id" :class="(n.id <= Math.round(item.vote_average)/2) ? 'fa-solid' : 'fa-regular'" class=" fa-star"></i>
