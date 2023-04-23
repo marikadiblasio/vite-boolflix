@@ -52,5 +52,9 @@ export const store = reactive({
           title: 'TV-Series',
           type: 'tv',
         }
-      ]
+      ],
+      md: window.matchMedia("(max-width: 768px)").matches,
+      lg: window.matchMedia("(max-width: 992px)").matches,
+      numShow: 2,
+      currentCard: 0
 })

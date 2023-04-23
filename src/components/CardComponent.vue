@@ -1,5 +1,5 @@
 <template>
-    <div class="col-12 col-md-6 col-lg-4 d-flex">
+    <div @click="store.currentCard = index" :class="(activeIndex <= index + store.numShow ) && activeIndex > index - 1 ? 'd-flex' : 'd-none'" class="col-12 col-md-6 col-lg-4">
         <div class="card front w-100 h-100">
             <img class="front-img" :src="fullImgPath" :alt="item.title || item.name">
         </div>
@@ -8,12 +8,12 @@
             <div class="card-body">
                 <h3>{{ item.title }}</h3>
                 <h5>{{ item.original_title || item.original_name}}</h5>
-                <div><img class="flag" :src="'/images/svg/language-' + item.original_language + '.svg'" :alt="item.original_language"></div>
+                <div><img class="flag" :src="checkLanguage" :alt="item.original_language"></div>
                 <div v-if="item.overview">
                     <h6>Trama</h6>
                     <p>{{ item.overview }}</p>
                 </div>
-                
+
             <div>
                 {{ Math.round(item.vote_average)/2 }}
                 <i v-for="(n) in stars" :key="n.id" :class="(n.id <= Math.round(item.vote_average)/2) ? 'fa-solid' : 'fa-regular'" class=" fa-star"></i>
@@ -27,11 +27,10 @@
     import {store} from '../data/store';
     export default {
         name: 'CardComponent',
-        props: ['item'],
+         props: ['item','index', 'activeIndex'],
         data(){
             return{
                 store,
-                // flag: this.language === 'en' || this.language === 'es' || this.language === 'it' || this.language === 'de' ||this.language === 'fr'? this.language : 'unknown',
                 stars: [
                     { id: 1},
                     { id: 2},
@@ -40,6 +39,8 @@
                     { id: 5},
                 ],
                 baseImgUrl: 'https:image.tmdb.org/t/p/w342',
+                baseLang: '/images/svg/language-',
+                LangExtens: '.svg'
             }
         },
         computed: {
@@ -50,7 +51,14 @@
                     return this.baseImgUrl + this.item.poster_path;
                 }
             },
-        }
+            checkLanguage(){
+                if(this.item.original_language === undefined || this.item.original_language === null){
+                    return '/images/unknown.png';
+                } else {
+                    return this.baseLang + this.item.original_language + this.LangExtens;
+                }
+            }
+        },
     }
 </script>
 
@@ -108,6 +116,6 @@
             height: 500px;
         }
     }
-        
-    
+
+
 </style>

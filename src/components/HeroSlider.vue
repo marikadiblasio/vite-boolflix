@@ -1,8 +1,6 @@
 <template>
     <div>
-        <video autoplay loop muted>
-            <source src="../assets/media/Harry Potter Max Original Series Announcement Teaser (HD).mp4">
-        </video>
+        <img src="/images/unknown.png" alt="">
     </div>
 </template>
 <script>
@@ -16,7 +14,8 @@
         width:100%;
         height: fit-content;
     }
-    video{
+    img{
         width: 100%;
+        height: 100%;
     }
 </style>
