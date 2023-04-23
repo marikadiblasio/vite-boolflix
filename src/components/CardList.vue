@@ -63,15 +63,15 @@
     .fa-angle-left{
         position: absolute;
         left: -5%;
-        top: 40%;
+        top: 45%;
         color: $my-tertiary;
-        font-size: 5rem;
+        font-size: 3rem;
             }
             .fa-angle-right{
         position: absolute;
-        right: -8%;
-        top: 40%;
+        left: 104%;
+        top: 45%;
         color: $my-tertiary;
-        font-size: 5rem;
+        font-size: 3rem;
             }
 </style>
