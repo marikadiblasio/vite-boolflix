@@ -1,7 +1,7 @@
 <template>
   <div>
-    <HeaderComponent @doSearch="getData" />
-    <HeroComponent />
+    <HeaderComponent @doSearch="getData" @doMovieSearch="getItems('movie')"/>
+    <HeroComponent/>
     <!-- <div class="text-white m-3" v-if="!store.search.query">Effettua una ricerca</div> -->
     <!-- <div v-else> -->
     <CardList v-for="item in items" :title="item.title" :type="item.type" />
@@ -80,6 +80,7 @@ export default {
       this.getItems('topTv');
     },
     checkShow() {
+      // store.mobile = window.matchMedia("()")
       store.md = window.matchMedia("(min-width: 768px)").matches;
       store.lg = window.matchMedia("(min-width: 992px)").matches;
       if (store.md && !store.lg) store.numShow = 1;
@@ -89,8 +90,10 @@ export default {
   },
   created() {
     this.getTop();
+    this.checkShow;
     window.addEventListener('resize', this.checkShow);
-  }
+  },
+  mounted(){}
 }
 </script>
   

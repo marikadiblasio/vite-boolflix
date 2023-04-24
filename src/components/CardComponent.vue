@@ -1,5 +1,5 @@
 <template>
-    <div @click="store.currentCard = index" :class="((activeIndex <= index + store.numShow ) && activeIndex > index - 1) ? 'd-flex' : 'd-none'" class="col-12 col-md-6 col-lg-4">
+    <div @click="cip()" :class="((activeIndex <= index + store.numShow ) && activeIndex > index - 1) ? 'd-flex' : 'd-none'" class="col-12 col-md-6 col-lg-4">
         <div class="card front w-100 h-100">
             <img class="front-img" :src="fullImgPath" :alt="item.title || item.name">
         </div>
@@ -59,6 +59,13 @@
                 }
             }
         },
+        methods: {
+            // cip(){
+            //     store.currentCard = this.fullImgPath;
+            //     store.clickedCard = true;
+            //     console.log(this.fullImgPath);
+            // }
+        }
     }
 </script>
 

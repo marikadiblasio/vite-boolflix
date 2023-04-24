@@ -1,9 +1,11 @@
 <template>
     <div>
-        <img src="/images/unknown.png" alt="">
+        <img :src="store.currentCard" alt="">
+        <!-- <img src="/images/unknown.png" alt=""> -->
     </div>
 </template>
 <script>
+import { store } from '../data/store';
     export default {
         name: 'HeroComponent'
     }
@@ -12,7 +14,8 @@
 <style lang="scss" scoped>
     div{
         width:100%;
-        height: fit-content;
+        height: 30rem;
+        object-fit: cover;
     }
     img{
         width: 100%;

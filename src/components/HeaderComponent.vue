@@ -2,11 +2,11 @@
     <header class="d-flex container-fluid align-items-center justify-content-between">
         <div class="d-flex align-items-center">
             <img class="logo me-3" src="/images/square-logo.svg" alt="">
-            <h1 class="text-uppercase mt-3 w-20">Boolfix</h1>
+            <h1 class="text-uppercase mt-3 d-none d-sm-block w-20">Boolfix</h1>
         </div>
         <div class="input-group flex-grow-0 mt-3 w-20">
             <input @keyup.enter="$emit('doSearch')"  type="text" class="form-control" placeholder="Search" name="searchString" v-model="store.search.query">
-            <button @click.prevent="$emit('doSearch')" class="btn btn-outline" type="button">Button</button>
+            <button @click.prevent="$emit('doSearch')" class="btn btn-outline d-none d-sm-block" type="button">Button</button>
         </div>
     </header>
 </template>

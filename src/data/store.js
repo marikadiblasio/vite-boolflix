@@ -53,8 +53,10 @@ export const store = reactive({
           type: 'tv',
         }
       ],
-      md: window.matchMedia("(max-width: 768px)").matches,
-      lg: window.matchMedia("(max-width: 992px)").matches,
-      numShow: 2,
-      currentCard: 0
+      // mobile: window.matchMedia("(max-width: 576)").matches,
+      md: window.matchMedia("(min-width: 768px)").matches,
+      lg: window.matchMedia("(min-width: 992px)").matches,
+      numShow: 0,
+      // currentCard: '',
+      // clickedCard: false
 })
