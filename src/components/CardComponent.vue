@@ -60,11 +60,12 @@
             }
         },
         methods: {
-            // cip(){
-            //     store.currentCard = this.fullImgPath;
-            //     store.clickedCard = true;
-            //     console.log(this.fullImgPath);
-            // }
+            cip(){
+                store.currentCard = this.fullImgPath;
+                // store.clickedCard = true;
+                console.log(this.fullImgPath);
+                // console.log(store.clickedCard)
+            }
         }
     }
 </script>

@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div v-if="store[type].results.length>0">
         <h2 class='my-5 container-fluid'>{{ title }}</h2>
         <div class="container position-relative">
             <i @click="activeIndex--" class="fa-solid fa-angle-left"></i>
@@ -27,7 +27,7 @@ export default {
     data() {
         return {
             store,
-            activeIndex: 0
+            activeIndex: store.numShow
         }
     },
     methods: {

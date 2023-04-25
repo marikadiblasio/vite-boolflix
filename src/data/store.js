@@ -57,6 +57,7 @@ export const store = reactive({
       md: window.matchMedia("(min-width: 768px)").matches,
       lg: window.matchMedia("(min-width: 992px)").matches,
       numShow: 0,
-      // currentCard: '',
+      // currentCard: 'https://banner2.cleanpng.com/20190219/ue/kisspng-photographic-film-westchester-film-festival-otherm-classical-music-mayhem-music-and-myths-and-book-5c6cb0e9c89a56.7139856315506270498217.jpg'
+      //  currentCard: '',
       // clickedCard: false
 })

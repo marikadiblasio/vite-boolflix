@@ -1,11 +1,9 @@
 <template>
   <div>
     <HeaderComponent @doSearch="getData" @doMovieSearch="getItems('movie')"/>
-    <HeroComponent/>
-    <!-- <div class="text-white m-3" v-if="!store.search.query">Effettua una ricerca</div> -->
-    <!-- <div v-else> -->
+    <HeroComponent />
+    <!-- <HeroSlider /> -->
     <CardList v-for="item in items" :title="item.title" :type="item.type" />
-    <!-- </div> -->
   </div>
 </template>
 
@@ -15,36 +13,38 @@ import axios from 'axios';
 import HeaderComponent from './components/HeaderComponent.vue';
 import CardList from './components/CardList.vue';
 import HeroComponent from './components/HeroComponent.vue';
+import HeroSlider from './components/HeroComponent.vue';
 export default {
-  name: 'App',
-  data() {
-    return {
-      store,
-      items: [
-        {
-          title: 'Most Popular Movies',
-          type: 'topMovie'
-        },
-        {
-          title: 'Most Popular Tv-Shows',
-          type: 'topTv'
-        },
-        {
-          title: 'Movies',
-          type: 'movie'
-        },
-        {
-          title: 'TV-Series',
-          type: 'tv',
-        }
-      ]
-    }
-  },
-  components: {
-    HeaderComponent,
-    CardList,
-    HeroComponent
-  },
+    name: "App",
+    data() {
+        return {
+            store,
+            items: [
+                {
+                    title: "Most Popular Movies",
+                    type: "topMovie"
+                },
+                {
+                    title: "Most Popular Tv-Shows",
+                    type: "topTv"
+                },
+                {
+                    title: "Movies",
+                    type: "movie"
+                },
+                {
+                    title: "TV-Series",
+                    type: "tv",
+                }
+            ]
+        };
+    },
+    components: {
+        HeaderComponent,
+        CardList,
+        HeroSlider,
+        HeroComponent
+    },
   methods: {
     getItems(entity) {
       this.store[entity].noRes = false;
@@ -90,7 +90,7 @@ export default {
   },
   created() {
     this.getTop();
-    this.checkShow;
+    this.checkShow();
     window.addEventListener('resize', this.checkShow);
   },
   mounted(){}
